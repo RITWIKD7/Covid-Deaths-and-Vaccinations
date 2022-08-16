@@ -15,3 +15,10 @@ select location,population,max(total_cases),max((total_cases)/population)*100 fr
 #Highest death 
 select location,population,max(total_deaths) from coviddeaths1 group by location;
 
+#Joining two tables
+select * from coviddeaths1 as dea join covidvaccinations1 as vac 
+on dea.location = vac.location and dea.date = vac.date; 
+
+#Total population vs Vaccinations
+select dea.continent,dea.location,dea.date,dea.population, vac.new_vaccinations from coviddeaths1 as dea join covidvaccinations1 as vac 
+on dea.location = vac.location and dea.date = vac.date ;
